@@ -1,0 +1,45 @@
+social-media-dashboard/
+|-- cmd
+|   |-- main.go
+|-- handlers/
+|   |-- home_handler.go
+|-- services/
+|   |-- facebook.go
+|   |-- twitter.go
+|   |-- instagram.go
+|-- web/
+|   |-- static/
+|   |   |-- style.css
+|   |   |-- script.js
+|   |-- templates/
+|   |   |-- dashboard.html
+|-- go.mod
+|-- go.sum
+
+
+Here is my project structure. i want to create a social media dashboard app using golang. where facebook twitter instagram follower count and show into the homepage(Dashboard). And also i want auto update follower counter number fetching in every 10 second of all platform.
+
+
+
+
+social-media-dashboard/
+|-- cmd
+|   |-- main.go
+|-- handlers/
+|   |-- home_handler.go
+|-- services/
+|   |-- facebook.go
+|   |-- twitter.go
+|   |-- instagram.go
+|-- web/
+|   |-- src/
+|   |   |-- index.css
+|   |   |-- main.jsx
+|   |   |-- App.jsx
+|   |   |-- context/
+|   |       |-- DarkModeContext.jsx
+|   |-- public/
+|   |   |-- icon-facebook.svg
+|   |-- index.html
+|-- go.mod
+|-- go.sum

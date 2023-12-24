@@ -1,0 +1,20 @@
+API key :     wgKgfm0vFL8mW6UKCIagz2RPO
+
+API Key Secret :   stL2DR9AurgcmvsAu93JhNQ7TIYpNVedpXFqCzxQsPzbdAfVpM
+
+Bearer Token :   AAAAAAAAAAAAAAAAAAAAAMl4rgEAAAAAyLo4P4UFwcOGkbr3TePXCI41nbU%3D4fJpsHCZ15NmmR2ncSCg6u68hRa8s4jUuy1Frel0nH0indhCte
+
+
+ConsumerKey    = "wgKgfm0vFL8mW6UKCIagz2RPO"
+ConsumerSecret = "stL2DR9AurgcmvsAu93JhNQ7TIYpNVedpXFqCzxQsPzbdAfVpM"
+AccessToken    = "1662842349406539776-VhvK0na2wT9UGFdqqFMyQp7ALUofDx"
+AccessSecret   = "GCNBG7IPiuNRZ7fGuX1JucI9zTRdi2YHklMZDrkVwcgB1"
+ScreenName     = "nihan3301"
+
+
+
+# Obtain a bearer token
+BEARER_TOKEN=$(curl -u "$CONSUMER_KEY:$CONSUMER_SECRET" --data "grant_type=client_credentials" "https://api.twitter.com/oauth2/token" | jq -r '.access_token')
+
+# Make a request to the Twitter API to get follower count
+curl -H "Authorization: Bearer $BEARER_TOKEN" "https://api.twitter.com/2/users/by/username/$SCREEN_NAME?user.fields=public_metrics"

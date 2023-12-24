@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css">
+    <title>Social Media Dashboard</title>
+    
+    <style>
+            body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #000000;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    header {
+        background-color: rgba(39, 37, 37, 0);
+        color: rgb(0, 0, 0);
+        padding: 1rem;
+        text-align: center;
+    }
+
+    h1 {
+        margin-bottom: 20px;
+        color: rgb(177, 228, 224);
+    }
+
+    .platforms {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-gap: 20px;
+        margin: 20px 0;
+    }
+
+    .platform {
+        background-color: #fff; /* Default background color */
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        text-align: center;
+    }
+
+    .platform.facebook {
+        background-color: #61749c; /* Facebook blue */
+    }
+
+    .platform.twitter {
+        background-color: #3c7aa0; /* Twitter sky blue */
+    }
+
+    .platform.youtube {
+        background: linear-gradient(to right, #a86260, #978e8e); /* YouTube red gradient */
+    }
+
+    .platform.instagram {
+        background: linear-gradient(to right, #fc7d79, #8d8787); /* YouTube red gradient */
+    }
+
+    .platform h2 {
+        margin-bottom: 10px;
+        color: #7d929b;
+    }
+
+    .platform p {
+        font-size: 1.1rem;
+        color: rgb(196, 196, 196);
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Social Media Dashboard</h1>
+    </header>
+
+    <div class="platforms">
+        <div class="platform facebook">
+            <i class="fa-brands fa-facebook"></i>
+            <img src="/fb.png" alt="">
+            <h2>Facebook</h2>
+            <p>Followers: {{.FacebookCount}}</p> </div>
+        <div class="platform twitter">
+            <i class="fa-brands fa-twitter"></i>
+            <img src="/tw.png" alt="">
+            <h2>Twitter</h2>
+            <p>Followers: 2187  <!--{{.TwitterCount}} --></p> </div>
+        <div class="platform youtube">
+            <i class="fa-brands fa-youtube"></i>
+            <img src="/yt.png" alt="">
+            <h2>YouTube</h2>
+            <p>Subscribers: 12354  <!--{{.TwitterCount}} --></p> </div>
+        <div class="platform instagram">
+            <i class="fa-brands fa-instagram"></i>
+            <img src="/insta.png" alt="">
+            <h2>Instagram</h2>
+            <p>Followers: 9876  <!--{{.TwitterCount}} --> </p> </div>
+    </div>
+</body>
+</html>
