@@ -3,7 +3,6 @@
 package api
 
 import (
-	"fmt"
 	"net/http"
 	"text/template"
 
@@ -19,26 +18,28 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	//fmt.Println("fbCount: ", fbCount)
+	// fmt.Println("fbCount: ", fbCount)
+	/*
+		//twCount, err := services.GetTwitterFollowerCount()
+		if err != nil {
+			http.Error(w, "Error fetching Twitter follower count", http.StatusInternalServerError)
+			return
+		}
 
-	twCount, err := services.GetTwitterFollowerCount()
-	if err != nil {
-		http.Error(w, "Error fetching Facebook follower count", http.StatusInternalServerError)
-		return
-	}
+		fmt.Println("tw: ", twCount)
 
-	fmt.Println("tw: ", twCount)
+	*/
 
 	/*igCount, err := services.GetInstagramFollowerCount()
 	if err != nil {
-		http.Error(w, "Error fetching Facebook follower count", http.StatusInternalServerError)
+		http.Error(w, "Error fetching Instagram follower count", http.StatusInternalServerError)
 		return
 	} */
 
 	// Render the dashboard template with follower counts
 	tmpl, err := template.ParseFiles("./web/templates/dashboard.html")
 	if err != nil {
-		http.Error(w, "Error in html parsing", http.StatusInternalServerError)
+		http.Error(w, "Error in HTML parsing", http.StatusInternalServerError)
 		return
 	}
 
@@ -48,7 +49,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		//InstagramCount int
 	}{
 		FacebookCount: fbCount,
-		TwitterCount:  twCount,
+		//TwitterCount:  twCount,
 		//InstagramCount: igCount,
 	}
 

@@ -1,68 +1,55 @@
-// twitter.go
+// services/twitter.go
 
 package services
 
+/*
 import (
-	"encoding/json"
-	"fmt"
+	"context"
+	"log"
 
-	"github.com/go-resty/resty/v2"
+	"github.com/g8rswimmer/go-twitter/v2"
+	"golang.org/x/oauth2"
 )
 
-const (
-	consumerKey    = "wgKgfm0vFL8mW6UKCIagz2RPO"
-	consumerSecret = "stL2DR9AurgcmvsAu93JhNQ7TIYpNVedpXFqCzxQsPzbdAfVpM"
-	accessToken    = "1662842349406539776-VhvK0na2wT9UGFdqqFMyQp7ALUofDx"
-	accessSecret   = "GCNBG7IPiuNRZ7fGuX1JucI9zTRdi2YHklMZDrkVwcgB1"
-	screenName     = "nihan3301"
-)
-
-// TwitterResponse represents the structure of the Twitter API response
-type TwitterResponse struct {
-	Data TwitterData `json:"data"`
+// TwitterService represents the service for interacting with the Twitter API
+type TwitterService struct {
+	client *twitter.Client
 }
 
-// TwitterData represents the data section in the Twitter API response
-type TwitterData struct {
-	PublicMetrics TwitterPublicMetrics `json:"public_metrics"`
+// NewTwitterService creates a new instance of TwitterService
+func NewTwitterService(apiKey, apiSecretKey, accessToken, accessTokenSecret string) *TwitterService {
+	// Set up Twitter API client with OAuth1 authentication
+	config := &oauth2.Config{
+		ClientID:     apiKey,
+		ClientSecret: apiSecretKey,
+		Scopes:       []string{"tweet.read", "user.read"},
+		Endpoint:     twitter.Endpoint,
+	}
+
+	token := &oauth2.Token{
+		AccessToken:  accessToken,
+		TokenType:    "Bearer",
+		RefreshToken: accessTokenSecret,
+	}
+
+	httpClient := config.Client(context.Background(), token)
+
+	client := twitter.NewClient(httpClient)
+
+	return &TwitterService{client: client}
 }
 
-// TwitterPublicMetrics represents the public_metrics section in the Twitter API response
-type TwitterPublicMetrics struct {
-	FollowersCount int `json:"followers_count"`
-}
-
-// GetTwitterFollowerCount fetches the follower count from Twitter API
-// GetTwitterFollowerCount fetches the follower count from Twitter API
-func GetTwitterFollowerCount() (int, error) {
-	url := fmt.Sprintf("https://api.twitter.com/2/users/by/username/%s?user.fields=public_metrics", screenName)
-
-	// Make a GET request to the Twitter API
-	response, err := resty.New().R().
-		SetHeader("Authorization", fmt.Sprintf("Bearer %s", accessToken)).
-		Get(url)
-
+// GetFollowerCount gets the number of followers for a given Twitter screen name
+func (ts *TwitterService) GetFollowerCount(screenName string) (int, error) {
+	// Retrieve user information including follower count
+	user, _, err := ts.client.Users.Show(context.Background(), &twitter.UserShowParams{
+		ScreenName: screenName,
+	})
 	if err != nil {
+		log.Println("Error getting user information:", err)
 		return 0, err
 	}
 
-	// Check for errors in the response
-	if response.StatusCode() != 200 {
-		return 0, nil
-	}
-
-	// Parse the response
-	var twitterResponse TwitterResponse
-	if err := json.Unmarshal(response.Body(), &twitterResponse); err != nil {
-		return 0, err
-	}
-
-	// Check for errors in the Twitter response
-	if twitterResponse.Data.PublicMetrics.FollowersCount == 0 {
-		return 0, nil //fmt.Errorf("Twitter API response does not contain valid follower count")
-	}
-
-	fmt.Println(twitterResponse.Data.PublicMetrics.FollowersCount)
-
-	return twitterResponse.Data.PublicMetrics.FollowersCount, nil
+	return user.Data.PublicMetrics.FollowersCount, nil
 }
+*/

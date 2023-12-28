@@ -8,9 +8,9 @@ social-media-dashboard/
 |   |-- twitter.go
 |   |-- instagram.go
 |-- web/
-|   |-- static/
-|   |   |-- style.css
-|   |   |-- script.js
+|   |-- src/
+|   |   |-- fb.svg
+|   |   |-- twitter.png
 |   |-- templates/
 |   |   |-- dashboard.html
 |-- go.mod
