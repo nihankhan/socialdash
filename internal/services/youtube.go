@@ -57,4 +57,3 @@ func GetYouTubeSubscriberCount() (int, error) {
 	return 0, nil
 }
 
-//https://www.googleapis.com/youtube/v3/channels?part=statistics&id=UCNzS7lrzRcTKgMD8cdX8DUA&key=AIzaSyBK2IcociFMU1e7iJ41nW-drY1EipRHOdA
