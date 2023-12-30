@@ -7,10 +7,8 @@ social-media-dashboard/
 |   |-- facebook.go
 |   |-- twitter.go
 |   |-- instagram.go
+|   |-- youtube.go
 |-- web/
-|   |-- src/
-|   |   |-- fb.svg
-|   |   |-- twitter.png
 |   |-- templates/
 |   |   |-- dashboard.html
 |-- go.mod

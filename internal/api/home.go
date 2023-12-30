@@ -3,6 +3,7 @@
 package api
 
 import (
+	"fmt"
 	"net/http"
 	"text/template"
 
@@ -18,6 +19,14 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	ytCount, err := services.GetYouTubeSubscriberCount()
+
+	if err != nil {
+		http.Error(w, "Error fetching Youtube Subscribers count", http.StatusInternalServerError)
+		return
+	}
+
+	fmt.Println("Youtube: ", ytCount)
 	// fmt.Println("fbCount: ", fbCount)
 	/*
 		//twCount, err := services.GetTwitterFollowerCount()
@@ -45,12 +54,14 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 
 	data := struct {
 		FacebookCount int
-		TwitterCount  int
+		//TwitterCount  int
 		//InstagramCount int
+		YoutubeCount int
 	}{
 		FacebookCount: fbCount,
 		//TwitterCount:  twCount,
 		//InstagramCount: igCount,
+		YoutubeCount: ytCount,
 	}
 
 	tmpl.Execute(w, data)

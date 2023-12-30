@@ -49,7 +49,7 @@ func GetFacebookFriendCount() (int, error) {
 		return 0, err
 	}
 
-	fmt.Println(fbResponse.Friends.Summary.TotalCount)
+	fmt.Println("Facebook: ", fbResponse.Friends.Summary.TotalCount)
 
 	return fbResponse.Friends.Summary.TotalCount, nil
 }
